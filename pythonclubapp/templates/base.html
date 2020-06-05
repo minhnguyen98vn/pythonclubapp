@@ -15,8 +15,11 @@
 <div class="navbar-header"> 
 <a class="navbar-brand" href="{% url 'index' %}">Python Club</a> 
 </div> 
-<ul class="nav navbar-nav"> 
-
+<ul class="nav navbar-nav">
+  <li><a href="{% url 'Types' %}">Types</a></li> 
+  <li><a href="{% url 'Products' %}">Products</a></li>
+  <li><a href="{% url 'newproducts' %}">Add Products</a></li>
+  <li><a href="{% url 'newreview' %}">Add Reviews</a></li>
 </ul> 
 </div> 
 </nav> 
