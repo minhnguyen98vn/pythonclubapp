@@ -1,0 +1,15 @@
+{% block content %}
+<h2>Product Types</h2>
+<table class='table'>
+<tr>
+    <th>Type Name</th>
+    <th>Type Description</th>
+</tr>
+{% for t in type_list %}
+<tr>
+    <td>{{t.typename}}</td>
+    <td>{{t.typedescription}}</td>
+</tr>
+</table>
+
+{% Endblock %}
