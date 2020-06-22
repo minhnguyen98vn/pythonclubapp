@@ -1,5 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ClubType, Product, Review
+from .models import Clubtype, Product, Review
+from .forms import ProductForm,ReviewForm
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 def index(request):
     return render(request, 'pythonclubapp/index.html')
@@ -23,3 +27,34 @@ def productDetail(request, id):
             'reviews':review, 
     }
     return render (request, 'ClubReviewApp/productdetail.html', context=context)
+@login_required
+def newProduct(request):
+    form=ProductForm
+    if request.method=='POST':
+        form=ProductForm(request.POST)
+        if form.is_valid():
+            post=form.save(commit=True)
+            post.save()
+            form=ProductForm()
+        else:
+            form=ProductForm
+        return render(request, 'ClubReviewApp/newproduct.html', {'form' :form})
+
+@login_required
+def newReview(request):
+    form=ReviewForm
+    if request.method=='POST':
+        form=ReviewForm(request.POST)
+        if form.is_valid():
+            post=form.save(commit=True)
+            post.save()
+            form=ReviewForm()
+        else:
+            form=ReviewForm
+        return render(request, 'ClubReviewApp/newproduct.html', {'form' :form})
+
+def loginMessage(request)
+return render(request, 'ClubReviewApp/loginmessage.html')
+
+def logoutMessage(request)
+return render(request, 'ClubReviewApp/logoutmessage.html')
